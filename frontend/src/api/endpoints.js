@@ -1,10 +1,14 @@
 import axios from 'axios';
 
+// ---------------------------------------------------------
+// 1️⃣ ВАРІАНТ ДЛЯ CREATE REACT APP (CRA) АБО NEXT.JS:
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080/api/";
 
-const API_URL = "http://localhost:8080/api/";
+// 2️⃣ ВАРІАНТ ДЛЯ VITE (якщо в тебе Vite, розкоментуй рядок нижче, а верхній закоментуй):
+// const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080/api/";
+// ---------------------------------------------------------
 
 export const api = axios.create({
-    // ✅ Виправлено: використовуємо правильну змінну API_URL
     baseURL: API_URL,
     headers: {
         'Content-Type': 'application/json',
