@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@500;900&display=swap');
+
+* {
+  /* Покращена обробка дотиків на мобільниці */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Запобігання зуму при фокусі інпутів */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Дозволяємо вибір тексту */
+input, textarea, button, a {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #050505;
+  color: #e0e0e0;
+  overflow-x: hidden;
+  /* Фоновий патерн "Кібер-сітка" */
+  background-image: 
+    linear-gradient(rgba(20, 20, 20, 0.9), rgba(5, 5, 5, 1)),
+    linear-gradient(90deg, rgba(50, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(50, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  /* Запобігання горизонтальному скролу */
+  width: 100%;
+  word-break: break-word;
+}
+
+/* Скролбар */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #d50000; border-radius: 4px; }
+
+/* Анімації */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(213, 0, 0, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(213, 0, 0, 0.8), 0 0 10px rgba(255, 255, 255, 0.2); }
+  100% { box-shadow: 0 0 10px rgba(213, 0, 0, 0.5); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Класи для анімацій */
+.animate-fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.3s; }
+.delay-300 { animation-delay: 0.5s; }
+
+/* Ефект скла */
+.glass-panel {
+  background: rgba(30, 30, 30, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* ============================================
+   МОБІЛЬНІ УТИЛІТИ ДЛЯ ДОСТУПНОСТІ
+   ============================================ */
+
+@media (max-width: 767px) {
+  /* Запобігання зуму при фокусі input на iOS Safari */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px !important; /* Мінімум 16px на iOS */
+    padding: 12px;
+    min-height: 44px;
+  }
+
+  /* Натискні елементи мають бути мінімум 44x44 (Apple HIG) */
+  button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Запобігання дефолтному стилю на iOS */
+  button, input[type="button"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  /* На мобільниці більш розпахнута макета */
+  .glass-panel {
+    margin: 10px;
+  }
+}
